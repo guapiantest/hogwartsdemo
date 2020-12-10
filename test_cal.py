@@ -38,7 +38,7 @@ class  TestCal:
     @allure.feature('除法测试--除数为0')
     def test_div2(self):
        with pytest.raises(ZeroDivisionError):
-            assert 1 / 0
+            assert  self.cal.div(self,1,0)
 
 
 
