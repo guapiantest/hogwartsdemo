@@ -2,6 +2,7 @@ import pytest
 import os
 from pythoncode.calculator import Calculator
 import allure
+import  yaml
 
 
 class  TestCal:
@@ -19,9 +20,10 @@ class  TestCal:
 
 
     @allure.feature('减法测试')
-    @pytest.mark.parametrize('m,n,expect',[(9,1,8),(9,9,0),(9,10,-1),(-1,-1,0)])
-    def test_sub(self,m,n,expect):
-        assert self.cal.sub(self,m,n)==expect
+    @pytest.mark.parametrize(('m','n','c'),yaml.safe_load(open("./data.yaml")))
+    def test_sub(self,m,n,c):
+        assert self.cal.sub(self,m,n)==c
+
 
 
     @allure.feature('乘法测试')
